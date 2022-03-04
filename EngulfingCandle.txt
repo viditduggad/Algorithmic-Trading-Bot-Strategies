@@ -1,0 +1,19 @@
+study(title="Lesson 6", shorttitle="RSI Swing Signals", overlay=true)
+
+rsiSource = input(title="RSI Source", type=input.source, defval=close)
+rsiLength = input(title="RSI Length", type=input.integer, defval=14)
+rsiOverbought = input(title="RSI Overbought Level", type=input.integer, defval=70)
+rsiOversold = input(title="RSI Oversold Level", type=input.integer, defval=30)
+
+rsiValue = rsi(rsiSource, rsiLength)
+rsiOB = rsiValue >= rsiOverbought
+rsiOS = rsiValue <= rsiOversold
+
+bullishEC = close > open[1] and close[1] < open[1]
+bearishEC = close < open[1] and close[1] > open[1]
+tradeSignal = ((rsiOS or rsiOS[1]) and bullishEC) or ((rsiOB or rsiOB[1]) and bearishEC)
+
+plotshape(tradeSignal and bullishEC, title="Long", location=location.belowbar, color=color.green, transp=0, style=shape.triangleup, text="Long")
+plotshape(tradeSignal and bearishEC, title="Short", location=location.abovebar, color=color.red, transp=0, style=shape.triangledown, text="Short")
+
+alertcondition(tradeSignal, title="RSI Trade Alert!", message="RSI Swing Signal for XXX")
