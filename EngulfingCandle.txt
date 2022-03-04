@@ -1,4 +1,4 @@
-study(title="Lesson 6", shorttitle="RSI Swing Signals", overlay=true)
+study(title="EngulfingCandle", shorttitle="RSI Swing Signals", overlay=true)
 
 rsiSource = input(title="RSI Source", type=input.source, defval=close)
 rsiLength = input(title="RSI Length", type=input.integer, defval=14)
