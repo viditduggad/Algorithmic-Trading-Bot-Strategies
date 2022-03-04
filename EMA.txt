@@ -1,0 +1,9 @@
+study(title="EMA 20/50/200", overlay=true)
+
+shortest = ema(close, 20)
+short = ema(close, 50)
+longest = ema(close, 200)
+
+plot(shortest, color = black)
+plot(short, color = blue)
+plot(longest, color = red)
