@@ -1,0 +1,10 @@
+study(title="Cross example", overlay=true)
+
+fastMA = sma(close, 15)
+slowMA = sma(close, 35)
+
+plotshape(series=cross(fastMA, slowMA), style=shape.diamond,
+     color=red, transp=0)
+
+plot(series=fastMA, color=teal)
+plot(series=slowMA, color=orange, linewidth=2)
